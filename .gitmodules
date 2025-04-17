@@ -1,6 +1,6 @@
-[submodule "my_bank_frontend"]
-	path = my_bank_frontend
+[submodule "MyBank_frontend"]
+	path = MyBank_frontend
 	url = https://github.com/YanisBra/MyBank_frontend.git
-[submodule "my_bank_backend"]
-	path = my_bank_backend
+[submodule "MyBank_backend"]
+	path = MyBank_backend
 	url = https://github.com/YanisBra/MyBank_backend.git
