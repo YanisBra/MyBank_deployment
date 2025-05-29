@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  database:
+    image: mysql:8
+    container_name: mybank_mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mybank_db
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - mybank-network
+
+  backend:
+    build:
+      context: ./MyBank_backend
+    container_name: mybank_backend_container
+    ports:
+      - "8082:80"
+    depends_on:
+      - database
+    networks:
+      - mybank-network
+
+  frontend:
+    build:
+      context: ./MyBank_frontend
+    container_name: mybank_frontend_container
+    ports:
+      - "5173:5173"
+    networks:
+      - mybank-network
+    command: ["npm", "run", "dev", "--", "--host"]
+
+volumes:
+  mysql_data:
+
+networks:
+  mybank-network:
+    driver: bridge
