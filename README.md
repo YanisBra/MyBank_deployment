@@ -14,15 +14,15 @@ MyBank is a simple web application for managing personal finances.
 
 ### Prerequisites
 
-- PHP >= 8.1
-- Node.js >= 18
+- PHP 
+- Node.js 
 - Composer
 - Mysql
 - Docker
 
-## Deploy with Docker (recommanded)
+### Deploy with Docker (recommanded)
 
-### Quick setup with Docker Compose
+#### Quick setup with Docker Compose
 
 ```bash
 docker compose up --build -d
@@ -36,8 +36,7 @@ This will:
 - Start the backend and database services
 - Start the frontend 
 
-
-#### ⚠️ Possible Migration Error
+##### ⚠️ Possible Migration Error
 
 When running the following command:
 
@@ -50,11 +49,11 @@ You might encounter the following error: `SQLSTATE[HY000] [2002] Connection refu
 This usually happens because the database container is not fully ready yet.
 Solution: Simply wait a few seconds and re-run the command.
 
-## Deploy locally
+### Deploy locally
 
-### Backend
+#### Backend
 
-#### Install the dependencies
+##### Install the dependencies
 
 ```bash
 cd MyBank_backend
@@ -63,7 +62,9 @@ php bin/console importmap:install
 
 ```
 
-#### Create the database and run the migrations:
+##### Create the database and run the migrations:
+
+Make sure to update the `.env` file if needed
 
 ```bash
 php bin/console doctrine:database:create
@@ -71,7 +72,7 @@ php bin/console doctrine:migrations:migrate
 php bin/console lexik:jwt:generate-keypair
 ```
 
-#### Run the backend locally
+##### Run the backend locally
 
 ```bash
 symfony server:start
@@ -80,7 +81,7 @@ symfony server:start
 The backend will be available at: http://localhost:8082/
 
 
-### Frontend
+#### Frontend
 
 ```bash
 cd MyBank_frontend
